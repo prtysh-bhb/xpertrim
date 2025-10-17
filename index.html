@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xpertim - Smart Digitalization. AI that Delivers. Real Business Value.">
+    <title>Xpertim | DigitalAIze Your Business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #FDB71A;
+            --dark-bg: #0a0a0a;
+            --dark-card: #1a1a1a;
+            --text-white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Effects */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.03;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            filter: blur(60px);
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #FDB71A 0%, transparent 70%);
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+            filter: blur(80px);
+        }
+
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
+            bottom: 20%;
+            left: 50%;
+            animation-delay: 10s;
+            filter: blur(70px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(40px, 30px) scale(1.05); }
+        }
+
+        /* Grid Pattern Background */
+        .grid-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(253, 183, 26, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(253, 183, 26, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: particleFloat 15s infinite ease-in-out;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Main content wrapper */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header & Navigation with glassmorphism */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(253, 183, 26, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gold);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.5); opacity: 0.2; }
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(253, 183, 26, 0.3);
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--primary-gold);
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-gold);
+        }
+
+        .btn-contact {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #f0a500 100%);
+            color: var(--dark-bg);
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(253, 183, 26, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-contact:hover::before {
+            left: 100%;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 183, 26, 0.5);
+        }
+
+        /* Hero Section with Advanced Effects */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%),
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 100px 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(253, 183, 26, 0.08) 0%, transparent 70%);
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(253, 183, 26, 0.03) 50%, transparent 70%);
+            animation: shimmer 15s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(253, 183, 26, 0.3);
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .hero .highlight {
+            color: var(--primary-gold);
+            -webkit-text-fill-color: var(--primary-gold);
+            text-shadow: 0 0 30px rgba(253, 183, 26, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #f0a500 100%);
+            color: var(--dark-bg);
+            box-shadow: 0 4px 15px rgba(253, 183, 26, 0.4);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(253, 183, 26, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(253, 183, 26, 0.1);
+            color: var(--text-white);
+            border: 2px solid var(--primary-gold);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            box-shadow: 0 4px 20px rgba(253, 183, 26, 0.4);
+        }
+
+        /* Section Styles with Enhanced Effects */
+        section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--primary-gold), transparent);
+            opacity: 0.3;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(253, 183, 26, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .section-intro {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Cards Grid with 3D Effects */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            perspective: 1000px;
+        }
+
+        .card {
+            position: relative;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--dark-card);
+            transform-style: preserve-3d;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(253, 183, 26, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 60px rgba(253, 183, 26, 0.3);
+        }
+
+        .card:focus {
+            outline: 3px solid var(--primary-gold);
+            outline-offset: 4px;
+        }
+
+        .card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+            filter: brightness(0.7);
+        }
+
+        .card:hover .card-background,
+        .card.active .card-background {
+            transform: scale(1.15);
+            filter: brightness(0.5);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
+            transition: background 0.3s ease;
+        }
+
+        .card:hover .card-overlay,
+        .card.active .card-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.95) 100%);
+        }
+
+        .card-content {
+            position: relative;
+            height: 100%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 10;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #f0a500 100%);
+            color: var(--dark-bg);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(253, 183, 26, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-title {
+            text-shadow: 0 0 20px rgba(253, 183, 26, 0.6);
+        }
+
+        .card-front {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-hover {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.7;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 0;
+        }
+
+        .card:hover .card-hover,
+        .card.active .card-hover {
+            opacity: 1;
+            max-height: 300px;
+            margin-top: 15px;
+        }
+
+        /* 4-Card Grid */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* References Section with Glow */
+        .references {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(253, 183, 26, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .references::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(253, 183, 26, 0.03) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .references h3 {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+            text-shadow: 0 0 30px rgba(253, 183, 26, 0.4);
+        }
+
+        .references p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .client-logos {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Footer with Gradient */
+        footer {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 1) 100%);
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(253, 183, 26, 0.2);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1.1rem;
+            }
+
+            .cards-grid,
+            .cards-grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .card {
+                height: 400px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        body {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="grid-pattern"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Header -->
+        <header>
+            <nav>
+                <div class="logo">
+                    <h1>XPERTIM</h1>
+                    <span>DigitalAIze!</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#platform">Platform</a></li>
+                    <li><a href="#africa">Africa Business Development</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact" class="btn-contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Smart Digitalization. <span class="highlight">AI that Delivers.</span> Real Business Value.</h2>
+                <p>We help companies transform intelligently — combining hands-on consulting, applied artificial intelligence, and smart digitalization to deliver measurable performance and sustainable competitive advantage.</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn-primary">Power Your Business with DigitalAIzation</a>
+                    <a href="#platform" class="btn-secondary">Discover MasterCraft</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Why Xpertim -->
+        <section id="services" class="reveal">
+            <div class="section-header">
+                <h2>Why Xpertim?</h2>
+                <p>Turning Technology into Tangible Results</p>
+            </div>
+
+            <div class="section-intro">
+                <p>For over 16 years, Xpertim has been empowering companies to strengthen their competitiveness through intelligent digitalization and applied AI.</p>
+                <p>We go beyond theory — combining deep technological expertise with business acumen to make transformation measurable, scalable, and effective.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card" tabindex="0" role="button" aria-label="Hands-on Consulting with Measurable Outcomes">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="card-badge">Consulting</span>
+                        <h3 class="card-title">Hands-on Consulting with Measurable Outcomes</h3>
+                        <p class="card-front">We turn strategy and expectations into tangible gains.</p>
+                        <p class="card-hover">
+                            We don't just advise — we build with you. From strategy design to implementation, Xpertim delivers concrete, data-driven improvements in performance, efficiency, and customer value. Every engagement is measured by results, not reports.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" tabindex="0" role="button" aria-label="AI-Powered Efficiency and Smarter Workflows">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="card-badge">AI & Automation</span>
+                        <h3 class="card-title">AI-Powered Efficiency and Smarter Workflows</h3>
+                        <p class="card-front">Automate the routine, streamline the flow, and decide faster.</p>
+                        <p class="card-hover">
+                            We apply artificial intelligence pragmatically — automating repetitive tasks, optimizing decision flows, and turning complex data into actionable insights. The result: faster operations, lower costs, and better decisions at every level of your organization.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" tabindex="0" role="button" aria-label="Adaptive Learning with MasterCraft">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="card-badge">Platform</span>
+                        <h3 class="card-title">Adaptive Learning with MasterCraft</h3>
+                        <p class="card-front">GenAI-powered learning that builds real mastery.</p>
+                        <p class="card-hover">
+                            Personalize training with Guided Deep Dive → Mastery Path: cited explanations, targeted practice, and progression only on demonstrated mastery—so teams upskill faster with measurable outcomes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: What We Do -->
+        <section class="reveal">
+            <div class="section-header">
+                <h2>What We Do</h2>
+                <p>Expertise that Delivers Impact</p>
+            </div>
+
+            <div class="section-intro">
+                <p>Our interdisciplinary team helps you design, implement, and scale digital and AI initiatives that create measurable business value.</p>
+                <p>We partner with you end-to-end — from opportunity discovery to production deployment.</p>
+            </div>
+
+            <div class="cards-grid-4">
+                <!-- Card 1 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Smart Digitalization & Process Optimization</h3>
+                        <p class="card-front">Modernize processes and experiences using your data while increasing your workforce's AI fluency.</p>
+                        <p class="card-hover">
+                            We map value streams, remove friction, and digitize workflows end-to-end for faster cycle times, lower cost, and better customer journeys.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Innovation & Product Development</h3>
+                        <p class="card-front">Discover → Develop → Deliver—at speed and with evidence.</p>
+                        <p class="card-hover">
+                            We discover and validate use cases, prototype quickly, and scale to production using agile methods and ROI tracking—so good ideas become high-impact products and services.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Program Orchestration & Change Enablement</h3>
+                        <p class="card-front">From PoC to production - proven, adopted, at scale.</p>
+                        <p class="card-hover">
+                            We run the program, enable teams, and land change—so impact compounds after go-live.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="card-badge">MasterCraft</span>
+                        <h3 class="card-title">Adaptive Learning Platform</h3>
+                        <p class="card-front">GenAI-powered training that scales skills—safely.</p>
+                        <p class="card-hover">
+                            Deploy MasterCraft for workforce or vocational programs: personalized paths, instructor copilot, mastery tracking, and integrations—governed and enterprise-ready.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References Section -->
+        <section class="reveal">
+            <div class="references">
+                <h3>DigitalAIzation is Our Business</h3>
+                <p>Proven Track Record. Trusted by Successful Companies & Industry Leaders</p>
+                <div class="client-logos">
+                    <p><strong>to name a few ...</strong></p>
+                    <p>Lufthansa Group / Lufthansa Systems • Deutsche Telekom / T-Systems • BNP Paribas / ConsorsBank • Commerzbank • Zeiss • Deutsche Bahn / DB Systel • Otto Group / Hermes • Phoenix Pharma • Mercedes Benz Mobility • IFS.ai ... several Startups</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: MasterCraft Platform -->
+        <section id="platform" class="reveal">
+            <div class="section-header">
+                <h2>MasterCraft — GenAI-Powered Adaptive Learning</h2>
+                <p>Proven Success. Trusted by Industry Leaders</p>
+            </div>
+
+            <div class="section-intro">
+                <p>A two-sided platform that personalizes training for learners and equips instructors with GenAI copilots—so skills grow faster, mastery is verified, and outcomes are measurable across cohorts.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Personalized Mastery Learning</h3>
+                        <p class="card-front">Adaptive paths that meet each learner where they are.</p>
+                        <p class="card-hover">
+                            MasterCraft adjusts difficulty, pacing, and content using mastery models aligned to learning objectives (e.g., Bloom's levels), so learners advance based on their readiness—accelerating time-to-competency.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Instructor Copilot & Content Studio</h3>
+                        <p class="card-front">Generate lessons, quizzes, and rubrics with GenAI.</p>
+                        <p class="card-hover">
+                            An LLM copilot drafts courses, item banks, and feedback; you review and control tone, scope, and standards. Retrieval grounding keeps content consistent with your materials and policies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Performance & Skills Benchmarks</h3>
+                        <p class="card-front">Real-time mastery tracking and skills heatmaps.</p>
+                        <p class="card-hover">
+                            Cohort dashboards, gap analysis, and competency maps help teams target instruction, compare cohorts, and demonstrate outcomes to stakeholders.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Africa Business Development -->
+        <section id="africa" class="reveal">
+            <div class="section-header">
+                <h2>Africa Business Development</h2>
+                <p>From qualified opportunities to signed deals—with local job impact</p>
+            </div>
+
+            <div class="section-intro">
+                <p>We originate the right opportunities and help close them—leveraging a continent-wide network of public-sector decision makers and entrepreneurial leaders to turn strategy into revenue and in-country jobs.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1589000517089-2950a29e8e94?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Opportunity Origination & Access</h3>
+                        <p class="card-front">Warm access to buyers, programs, and projects.</p>
+                        <p class="card-hover">
+                            Tap our on-the-ground network of ministries, agencies, corporates, and founders to surface funded demand, co-shape opportunities, and build a prioritized, action-ready pipeline.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Deal Acceleration & Closure</h3>
+                        <p class="card-front">From intent to signed—fast and de-risked.</p>
+                        <p class="card-hover">
+                            We co-create proposals, navigate procurement, align stakeholders, and structure terms—so deals close cleanly and projects launch with momentum.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Partnerships & Local Capacity</h3>
+                        <p class="card-front">Alliances that deliver and create jobs.</p>
+                        <p class="card-hover">
+                            Identify and enable local partners and suppliers; set governance and incentives; embed job-creation KPIs, training, and reporting for measurable impact.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Get Started -->
+        <section id="contact" class="reveal">
+            <div class="section-header">
+                <h2>Get Started</h2>
+                <p>Let's Turn AI into Your Everyday Advantage</p>
+            </div>
+
+            <div class="section-intro">
+                <p>Whether you're scaling existing programs or exploring new opportunities, we help you move faster, reduce risk, and realize measurable value.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Accelerate Your DigitalAIzation</h3>
+                        <p class="card-front">Scale what works; unlock new value pools.</p>
+                        <p class="card-hover">
+                            Optimize and extend ongoing initiatives—improving ROI, reliability, and speed to impact with better data, models, and integrations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Adaptive Learning (MasterCraft)</h3>
+                        <p class="card-front">See MasterCraft in action — book a demo or working session.</p>
+                        <p class="card-hover">
+                            Client-led, expert-orchestrated kickoff: clarify your priority program, define success metrics, and outline a pilot plan using Guided Deep Dive → Mastery Path for measurable learning outcomes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" tabindex="0" role="button">
+                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=800&q=80');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Africa Business Development</h3>
+                        <p class="card-front">Turn qualified access into signed deals — start here.</p>
+                        <p class="card-hover">
+                            Request a Warm-Intro Map or Deal Acceleration Session: map decision-makers, shortlist partners, align next steps, and embed job-creation KPIs so growth and local impact advance together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Xpertim. All rights reserved. | DigitalAIze Your Business</p>
+        </footer>
+    </div>
+
+    <script>
+        // Generate particles dynamically
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Card interactions
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            // Keyboard navigation
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleCard(card);
+                }
+            });
+
+            // Mobile click
+            card.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    toggleCard(card);
+                }
+            });
+        });
+
+        function toggleCard(card) {
+            const isActive = card.classList.contains('active');
+            cards.forEach(c => c.classList.remove('active'));
+            if (!isActive) {
+                card.classList.add('active');
+                card.setAttribute('aria-expanded', 'true');
+            } else {
+                card.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        // Close card when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !e.target.closest('.card')) {
+                cards.forEach(card => {
+                    card.classList.remove('active');
+                    card.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+
+        // Initialize ARIA
+        cards.forEach(card => card.setAttribute('aria-expanded', 'false'));
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
